@@ -192,10 +192,8 @@ section{
 
 /* HERO SECTION */
 .hero{
-  background:linear-gradient(135deg, rgba(17,17,17,0.8) 0%, rgba(255,107,53,0.2) 100%), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23222" width="1200" height="600"/><rect fill="%23333" x="50" y="100" width="80" height="400"/><rect fill="%23444" x="150" y="150" width="100" height="350"/><rect fill="%23333" x="300" y="80" width="120" height="420"/></svg>');
-  background-size:cover;
-  background-position:center;
-  background-attachment:fixed;
+  position:relative;
+  overflow:hidden;
   color:#fff;
   padding:200px 20px;
   text-align:center;
@@ -203,6 +201,50 @@ section{
   display:flex;
   align-items:center;
   justify-content:center;
+}
+
+.hero-bg{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-image:url('../img/hero-bg.jpg');
+  background-size:cover;
+  background-position:center;
+  z-index:1;
+  transform-origin:center center;
+  animation:smoothZoom 20s infinite alternate ease-in-out;
+  transition:transform 0.8s ease-out;
+  will-change:transform;
+}
+
+.hero:hover .hero-bg{
+  transform:scale(1.15);
+}
+
+.hero-overlay{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(135deg, rgba(17,17,17,0.85) 0%, rgba(20,20,20,0.65) 60%, rgba(255,107,53,0.35) 100%);
+  z-index:2;
+}
+
+.hero-content{
+  position:relative;
+  z-index:3;
+}
+
+@keyframes smoothZoom {
+  0% {
+    transform:scale(1);
+  }
+  100% {
+    transform:scale(1.12);
+  }
 }
 .hero-content h1{
   font-size:3.5rem;
